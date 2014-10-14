@@ -20,8 +20,9 @@ class Request(object):
 
     def __init__(self, url, token, verbose=None):
         self.url = url
-        self._auth = (token, '')
+        self._auth = token
         self.verbose = verbose
+        self.a = '1'
 
     def _request(self, method, path, data=None):
         url = self.url + path + '.json'
@@ -29,10 +30,9 @@ class Request(object):
         headers = None
         if data is not None:
             data = json.dumps(data)
-            headers = {'Content-Type': 'application/json'}
+        headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer {0}'.format(self._auth)}
 
-        r = requests.request(method, url, data=data, headers=headers,
-                             auth=self._auth)
+        r = requests.request(method, url, data=data, headers=headers)
         r.raise_for_status()
 
         if self.verbose is not None:
