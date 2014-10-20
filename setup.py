@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import Command, find_packages, setup
-from camplight import __version__
 import sys
 
 install_requires = ['requests>=1.0.3']
@@ -45,7 +44,7 @@ class PyPandoc(Command):
 
 
 setup(name='camplight',
-      version=__version__,
+      version='0.9.6.post1',
       author='Mathias Lafeldt',
       author_email='mathias.lafeldt@gmail.com',
       url='https://github.com/mlafeldt/camplight',
